@@ -18,7 +18,7 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io --username ${{ github.actor }} --password-stdin
 
       - name: Build Docker image
-        run: docker-compose build user_content
+        run: docker-compose build user_content_proxy
 
       - name: Push image
-        run: docker-compose push user_content
+        run: docker-compose push user_content_proxy
