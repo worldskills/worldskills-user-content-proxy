@@ -1,0 +1,11 @@
+---
+version: "3.7"
+services:
+
+  user_content_proxy:
+    build: .
+    image: ghcr.io/worldskills/user-content-proxy
+    volumes:
+      - /tmp/worldskills_user_content:/usr/local/apache2/htdocs/
+    ports:
+      - "8081:80"

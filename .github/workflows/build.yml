@@ -1,0 +1,24 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Docker login
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io --username ${{ github.actor }} --password-stdin
+
+      - name: Build Docker image
+        run: docker-compose build user_content
+
+      - name: Push image
+        run: docker-compose push user_content
